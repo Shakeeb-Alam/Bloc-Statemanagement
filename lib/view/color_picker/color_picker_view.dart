@@ -45,27 +45,31 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
   }
 
   List<Notes> list = [];
-  late SharedPreferences sharedPreferences;
+  //late SharedPreferences sharedPreferences;
 
-  getData() {
-    // List<String>? stringList = ColorPickerState.getStringList("list");
-    List<String>? stringList = sharedPreferences.getStringList("list");
-
-    if (stringList != null) {
-      list =
-          stringList.map((item) => Notes.fromJson(json.decode(item))).toList();
-    }
-  }
+  // getData() {
+  //
+  //   List<String>? stringList = sharedPreferences.getStringList("list");
+  //
+  //   if (stringList != null) {
+  //     list =
+  //         stringList.map((item) => Notes.fromJson(json.decode(item))).toList();
+  //   }
+  // }
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      sharedPreferences = await SharedPreferences.getInstance();
-      getData();
-    });
-
+    context.read<ColorPickerBloc >() .add(GetData( ));
     super.initState();
   }
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+  //     sharedPreferences = await SharedPreferences.getInstance();
+  //     getData();
+  //   });
+  //
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +79,7 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.download),
           onPressed: () {
-            //context.read<CounterBloc>().add(IncrementCounter())
-            //  context.read<ColorPickerBloc>().add(AddColor(getColor() as double));
-            // BlocProvider.of<ColorPickerBloc>(context)
-            //     .add(AddColor(getColor() as double));
+
             showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.white,
@@ -163,12 +164,12 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
                                       title: title.text,
                                       description: description.text);
 
-                                  list.insert(0, notes);
-                                  List<String> stringList = list
-                                      .map((item) => json.encode(item.toMap()))
-                                      .toList();
-                                  sharedPreferences.setStringList(
-                                      "list", stringList);
+                                  // list.insert(0, notes);
+                                  // List<String> stringList = list
+                                  //     .map((item) => json.encode(item.toMap()))
+                                  //     .toList();
+                                  // sharedPreferences.setStringList(
+                                  //     "list", stringList);
                                   context
                                       .read<ColorPickerBloc>()
                                       .add(AddColor(notes ));

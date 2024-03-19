@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'E-Form',
         color: Color(0xFF44697D),
-        home: ColorPickerScreen(),
+        home: ColorPickerScreen(
+
+        ),
       ),
     );
   }

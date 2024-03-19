@@ -7,4 +7,8 @@ abstract class ColorPickerEvent {}
 class AddColor extends ColorPickerEvent {
   final Notes noteColor;
   AddColor(this.noteColor);
+
+}
+class GetData extends ColorPickerEvent{
+
 }

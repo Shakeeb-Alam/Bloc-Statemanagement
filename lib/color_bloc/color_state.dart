@@ -12,6 +12,7 @@ class ColorPickerState {
     return ColorPickerState(
       noteColor: noteColor ?? this.noteColor,
     );
+
   }
 
 }
