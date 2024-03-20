@@ -1,3 +1,4 @@
+import 'package:blocstate/color_bloc/color_event.dart';
 import 'package:blocstate/view/color_picker/color_picker_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ColorPickerBloc(),
+      create: (context) => ColorPickerBloc()..add(GetData()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'E-Form',

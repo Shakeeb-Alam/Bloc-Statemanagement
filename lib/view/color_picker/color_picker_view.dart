@@ -57,11 +57,11 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
   //   }
   // }
 
-  @override
-  void initState() {
-    context.read<ColorPickerBloc >() .add(GetData( ));
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   context.read<ColorPickerBloc >() .add(GetData());
+  //   super.initState();
+  // }
   // void initState() {
   //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
   //     sharedPreferences = await SharedPreferences.getInstance();

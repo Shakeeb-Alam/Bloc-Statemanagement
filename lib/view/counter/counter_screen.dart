@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../count_bloc/counter_bloc.dart';
+import '../../count_bloc/counter_bloc.dart';
 
 class CounterBlocPage extends StatelessWidget {
   const CounterBlocPage({super.key});

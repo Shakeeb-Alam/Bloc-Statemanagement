@@ -39,22 +39,24 @@ class ColorPickerBloc extends Bloc<ColorPickerEvent, ColorPickerState> {
             stringList.map((item) {
               return Notes.fromJson(json.decode(item));
             }).toList();  // list ke ander save karwayaa
+
        emit(state.copyWith(noteColor:data ));
       }
 
   }
 
-
-
-
+  //save data to shared prefrence
   Future<void> saveColorsToPrefs(List<Notes> colors) async {
     final SharedPreferences sharedPreferences= await SharedPreferences.getInstance();    //instance of shared prefrence
-    List<String> colorStrings = colors.map((color) => color.toString()).toList();
+
+    // json encode karwaya toMap kar k
+   final List<String> colorStrings = colors.map((color) => json.encode(color.toMap())).toList();
+
     await sharedPreferences.setStringList('list', colorStrings);
 
     List<String>? stringList = sharedPreferences.getStringList("list");
 
-    print('stringList: $stringList');
+  //  print('stringList: $stringList');
 
   }
 }
